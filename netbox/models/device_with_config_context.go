@@ -22,7 +22,6 @@ package models
 
 import (
 	"encoding/json"
-	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
