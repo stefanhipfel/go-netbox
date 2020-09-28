@@ -69,7 +69,7 @@ type VirtualMachineWithConfigContext struct {
 	LastUpdated strfmt.DateTime `json:"last_updated,omitempty"`
 
 	// Local context data
-	LocalContextData {}interface `json:"local_context_data,omitempty"`
+	LocalContextData interface{} `json:"local_context_data,omitempty"`
 
 	// Memory (MB)
 	// Maximum: 2.147483647e+09
@@ -104,7 +104,7 @@ type VirtualMachineWithConfigContext struct {
 	Status *VirtualMachineWithConfigContextStatus `json:"status,omitempty"`
 
 	// tags
-	Tags []*NestedTag `json:"tags,omitempty"`
+	Tags []string `json:"tags,omitempty"`
 
 	// tenant
 	Tenant *NestedTenant `json:"tenant,omitempty"`
@@ -429,16 +429,6 @@ func (m *VirtualMachineWithConfigContext) validateTags(formats strfmt.Registry) 
 		if swag.IsZero(m.Tags[i]) { // not required
 			continue
 		}
-
-		if m.Tags[i] != nil {
-			if err := m.Tags[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
