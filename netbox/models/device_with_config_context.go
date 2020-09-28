@@ -126,7 +126,7 @@ type DeviceWithConfigContext struct {
 	Status *DeviceWithConfigContextStatus `json:"status,omitempty"`
 
 	// tags
-	Tags []string `json:"tags,omitempty"`
+	Tags []NestedTag `json:"tags,omitempty"`
 
 	// tenant
 	Tenant *NestedTenant `json:"tenant,omitempty"`
